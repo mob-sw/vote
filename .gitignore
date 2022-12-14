@@ -21,3 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# firebase env file
+/src/firebase.env
+
+# test file
+/src/App.test.tsx
+/src/setupTests.tsx
+/src/react-app-env-d.tsx
+/src/reportWebVitals.ts

@@ -1,0 +1,17 @@
+#Create CRA with typescript
+npx create-react-app [프로젝트명] --template typescript
+
+#install lib for mui
+npm i @emotion/react
+npm i @emotion/styled
+npm i @mui/icons-material
+npm i @mui/material
+npm i @types/react
+npm i @types/react-dom
+npm i react-dom
+
+#install firebase for firestore
+npm i firebase
+#install ditenv for firebase SDK info
+npm i dotenv
+
