@@ -6,7 +6,7 @@ import { createContext } from 'react';
 
 export const checkCircleContext = createContext({ checked: false});
 
-function CheckCircle() {
+function CheckButton() {
     const [check, setCheck] = useState(false);
 
     const change = () => {
@@ -21,4 +21,4 @@ function CheckCircle() {
     );
 }
 
-export default CheckCircle;
+export default CheckButton;
