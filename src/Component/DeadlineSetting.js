@@ -5,7 +5,7 @@ import { IconButton } from '@mui/material';
 function DeadlineSetting() {
     return (
         <IconButton>
-            <div class="item"><AccessTimeIcon /></div>
+            <div><AccessTimeIcon /></div>
         </IconButton>
     );
 }
