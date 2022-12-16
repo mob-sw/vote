@@ -1,7 +1,7 @@
 import React from 'react';
-import PollText from '../Component/PollText';
+import PollTitleText from '../Component/PollTitleText';
 import InputRadio from '../Component/InputRadio';
-import InputList from '../Component/InputList';
+import PollList from '../Component/PollList';
 import ActionButton from '../Component/ActionButton';
 import { Divider } from '@mui/material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -27,10 +27,10 @@ function MakePollScene() {
                 <div class="item"><h5>공지</h5></div>
             </div>
             <Divider />
-            <PollText />
+            <PollTitleText />
             <Divider />
             <InputRadio />
-            <InputList />
+            <PollList />
             <div class="container">
                 <div class="item"><ActionButton /></div>
                 <div class="item"><h5>항목 추가</h5></div>
