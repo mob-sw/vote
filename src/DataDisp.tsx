@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { firestore, fapp } from "./firebase-config.js";
 import {
   collection,
@@ -11,9 +11,26 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-function DataDisp() {
+interface dataType {
+  title: string;
+  type: string;
+  //items: Map<string, string[]>;
+  deadline: string;
+  multiSelect: boolean;
+  closeYN: boolean;
+  ownerID: string;
+}
+
+type propsType = {
+  setVoteInfo: (value: dataType) => void;
+};
+
+function DataDisp(setVoteInfo: propsType) {
+  //const [voteItem, setVote] = useState(props);
+
   useEffect(() => {
     let isMounted = true;
+
     console.log("useEffect called");
 
     const doFetch = async () => {
@@ -25,6 +42,15 @@ function DataDisp() {
       querySnapshot.forEach((doc) => {
         //console.log("info : ", `${doc.id} => ${doc.data()}`);
         console.log("info : ", doc.data());
+        const record: dataType = {
+          closeYN: doc.data().closeYN,
+          type: doc.data().type,
+          multiSelect: doc.data().multiSelect,
+          title: doc.data().title,
+          deadline: doc.data().deadline,
+          ownerID: doc.data().ownerID,
+          //items: new Map<string, string[]>,
+        };
       });
     };
 
@@ -38,7 +64,7 @@ function DataDisp() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  });
 
   //const voteinfo = collection(firestore, "voteinfo");
   //console.log("voteinfo : " + voteinfo);
