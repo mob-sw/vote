@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Layout from "./layout";
 import { DataDisp } from "./DataDisp";
 import { firestore, fapp } from "./firebase-config.js";
-import { getFirestore, Timestamp } from "firebase/firestore";
-import { stringify } from "querystring";
+import { getFirestore } from "firebase/firestore";
+import MakePollScene from "./Scene/MakePollScene";
 
 function App() {
   console.log("test firestore bp1");
@@ -68,7 +68,7 @@ function App() {
   return (
     <div>
       <Layout />
-      <DataDisp setVoteInfo={handleCreate} dbData={voteinfo} />
+      <DataDisp setVoteInfo={handleCreate} />
       <div /*데이터 확인을 위해 임시 출력*/>
         {voteinfo.map((vote) => (
           <div>
