@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import MakePollScene from "./Scene/MakePollScene";
 
 interface Props {
   /**
@@ -25,13 +26,23 @@ const drawerWidth = 240;
 const navItems = ["투표 만들기", "투표항목 보기"];
 
 export default function DrawerAppBar(props: Props) {
+  console.log("disp layout body");
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
+    console.log("toggle drawer");
     setMobileOpen(!mobileOpen);
   };
 
+  const [dispViewAll, setViewAll] = React.useState(true);
+  const handleViewAll = () => {
+    console.log("called handleViewAll");
+    setViewAll(true);
+  };
+  const handleMakePoll = () => {
+    console.log("called handleMakePoll");
+    setViewAll(false);
+  };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -40,7 +51,11 @@ export default function DrawerAppBar(props: Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem
+            key={item}
+            disablePadding
+            onClick={item === "투표 만들기" ? handleMakePoll : handleViewAll}
+          >
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item} />
             </ListItemButton>
@@ -105,7 +120,8 @@ export default function DrawerAppBar(props: Props) {
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
         <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+          {dispViewAll ? <MakePollScene /> : <MakePollScene />}
+          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
           unde fugit veniam eius, perspiciatis sunt? Corporis qui ducimus
           quibusdam, aliquam dolore excepturi quae. Distinctio enim at eligendi
           perferendis in cum quibusdam sed quae, accusantium et aperiam? Quod
@@ -139,7 +155,7 @@ export default function DrawerAppBar(props: Props) {
           ipsa ullam consequuntur dignissimos numquam at nisi porro a, quaerat
           rem repellendus. Voluptates perspiciatis, in pariatur impedit, nam
           facilis libero dolorem dolores sunt inventore perferendis, aut
-          sapiente modi nesciunt.
+          sapiente modi nesciunt. */}
         </Typography>
       </Box>
     </Box>
