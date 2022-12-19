@@ -13,6 +13,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import MakePollScene from "./Scene/MakePollScene";
+import ViewAll from "./Scene/ViewAllScene";
 
 interface Props {
   /**
@@ -23,7 +24,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["투표 만들기", "투표항목 보기"];
+const navItems = ["Create", "ViewAll"];
 
 export default function DrawerAppBar(props: Props) {
   console.log("disp layout body");
@@ -51,11 +52,7 @@ export default function DrawerAppBar(props: Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem
-            key={item}
-            disablePadding
-            onClick={item === "투표 만들기" ? handleMakePoll : handleViewAll}
-          >
+          <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item} />
             </ListItemButton>
@@ -90,7 +87,11 @@ export default function DrawerAppBar(props: Props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
+              <Button
+                key={item}
+                sx={{ color: "#fff" }}
+                onClick={item === "Create" ? handleMakePoll : handleViewAll}
+              >
                 {item}
               </Button>
             ))}
@@ -119,9 +120,9 @@ export default function DrawerAppBar(props: Props) {
       </Box>
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-        <Typography>
-          {dispViewAll ? <MakePollScene /> : <MakePollScene />}
-          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+
+        {dispViewAll ? <ViewAll /> : <MakePollScene />}
+        {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
           unde fugit veniam eius, perspiciatis sunt? Corporis qui ducimus
           quibusdam, aliquam dolore excepturi quae. Distinctio enim at eligendi
           perferendis in cum quibusdam sed quae, accusantium et aperiam? Quod
@@ -156,7 +157,6 @@ export default function DrawerAppBar(props: Props) {
           rem repellendus. Voluptates perspiciatis, in pariatur impedit, nam
           facilis libero dolorem dolores sunt inventore perferendis, aut
           sapiente modi nesciunt. */}
-        </Typography>
       </Box>
     </Box>
   );
